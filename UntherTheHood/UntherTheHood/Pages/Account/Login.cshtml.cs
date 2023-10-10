@@ -26,7 +26,13 @@ namespace UntherTheHood.Pages.Account
                 var Claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, "Admin"),
-                    new Claim(ClaimTypes.Email, "Jaber.sajedi@gmail.com")
+                    new Claim(ClaimTypes.Email, "Jaber.sajedi@gmail.com"),
+
+                    new Claim("Department", "HR"),
+
+                    new Claim("Admin","true" ),
+
+                 new Claim("HRManagerOnly","true")
                 };
                 var identity=new ClaimsIdentity(Claims,"MyCookieAuth");
                 ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(identity);
