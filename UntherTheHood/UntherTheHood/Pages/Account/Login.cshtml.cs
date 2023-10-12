@@ -32,9 +32,9 @@ namespace UntherTheHood.Pages.Account
 
                     new Claim("Admin","true" ),
 
-                 new Claim("Manager","true"),
+                    new Claim("Manager","true"),
 
-                 new Claim("EmploymentDate","2023-01-01")
+                    new Claim("EmploymentDate","1402-01-19")
                 };
                 var identity = new ClaimsIdentity(Claims, "MyCookieAuth");
                 ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(identity);

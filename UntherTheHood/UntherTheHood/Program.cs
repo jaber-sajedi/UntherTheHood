@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using UntherTheHood.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,7 @@ builder.Services.AddAuthentication().AddCookie("MyCookieAuth", options =>
     options.Cookie.Name = "MyCookieAuth";
     options.LoginPath = "/Account/Login";
     options.AccessDeniedPath = "/Account/AccessDenied";
+    options.ExpireTimeSpan = TimeSpan.FromHours(1);
 });
 
 builder.Services.AddAuthorization(options =>
@@ -29,6 +31,8 @@ builder.Services.AddAuthorization(options =>
             .RequireClaim("Manager").
             Requirements.Add(new HRManagerProbationRequirement(3)));
 });
+
+builder.Services.AddSingleton<IAuthorizationHandler, HRManagerProbationRequirementHandler>();
 #endregion
 //builder.Services.AddRazorPages();
 
@@ -54,7 +58,7 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 ////////
- 
+
 app.MapRazorPages();
 
 app.Run();
