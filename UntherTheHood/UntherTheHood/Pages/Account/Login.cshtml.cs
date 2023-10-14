@@ -39,7 +39,12 @@ namespace UntherTheHood.Pages.Account
                 var identity = new ClaimsIdentity(Claims, "MyCookieAuth");
                 ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(identity);
 
-                await HttpContext.SignInAsync("MyCookieAuth", claimsPrincipal);
+                var authProperties = new AuthenticationProperties
+                {
+                    IsPersistent = Credential.RememberMe
+                };
+
+                await HttpContext.SignInAsync("MyCookieAuth", claimsPrincipal, authProperties);
 
                 return RedirectToPage("/Index");
 
@@ -57,6 +62,10 @@ namespace UntherTheHood.Pages.Account
         [Required]
         [DataType(DataType.Password)]
         public String Password { get; set; }
+
+        [Display(Name = "Remember Me")]
+        public bool RememberMe { get; set; }
+        
 
     }
 }

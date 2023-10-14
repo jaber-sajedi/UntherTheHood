@@ -2,7 +2,7 @@
 @model UntherTheHood.Pages.Account.LoginModel
 @{
 }
- 
+
 
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -17,13 +17,18 @@
                         <div class="form-group">
                             <label asp-for="Credential.UserName"></label>
                             <input type="text" class="form-control" asp-for="Credential.UserName" placeholder="Enter username">
-                       <span class="text-danger" asp-validation-for="Credential.UserName"></span>
-                            </div>
+                            <span class="text-danger" asp-validation-for="Credential.UserName"></span>
+                        </div>
                         <div class="form-group">
                             <label asp-for="Credential.Password" class="mt-2"></label>
                             <input type="password" class="form-control " asp-for="Credential.Password" placeholder="Enter password">
                             <span class="text-danger" asp-validation-for="Credential.Password"></span>
-
+                        </div>
+                        <div class="row form-check m-2">
+                            <div class="col-4">
+                                <input type="checkbox" asp-for="Credential.RememberMe" class="form-check-input" />
+                                <label class="form-check-label" asp-for="Credential.RememberMe"></label>
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary mt-2"><i class="fas fa-sign-in-alt"></i> Login</button>
                     </form>
@@ -35,4 +40,3 @@
 
 
 
- 
